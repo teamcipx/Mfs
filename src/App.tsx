@@ -68,6 +68,21 @@ const getBKashDate = (d: Date) => {
   return `${hStr}:${mins}${ampm} ${day}/${month}/${year}`;
 };
 
+const BN_SHORT_MONTHS = [
+  'জানু',
+  'ফেব্রু',
+  'মার্চ',
+  'এপ্রিল',
+  'মে',
+  'জুন',
+  'জুলাই',
+  'আগ',
+  'সেপ্টে',
+  'অক্টো',
+  'নভে',
+  'ডিসে',
+];
+
 const getNagadDate = (d: Date) => {
   let hours = d.getHours();
   const mins = d.getMinutes().toString().padStart(2, '0');
@@ -76,9 +91,9 @@ const getNagadDate = (d: Date) => {
   hours = hours ? hours : 12;
   const hStr = hours.toString().padStart(2, '0');
   const year = d.getFullYear();
-  const month = (d.getMonth() + 1).toString().padStart(2, '0');
+  const monthName = BN_SHORT_MONTHS[d.getMonth()];
   const day = d.getDate().toString().padStart(2, '0');
-  return `${hStr}:${mins} ${ampm} ${year}-${month}-${day}`;
+  return `${day} ${monthName} ${year}, ${hStr}:${mins} ${ampm}`;
 };
 
 const formatInputDate = (d: Date) => {
